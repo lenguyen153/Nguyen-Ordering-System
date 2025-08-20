@@ -6,6 +6,10 @@ using OrderManagementSystem.Data;
 using OrderManagementSystem.Models;
 using System.Text;
 using OrderManagementSystem.Auth;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,6 +77,26 @@ builder.Services.AddScoped<OrderManagementSystem.Services.ProductService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<OrderManagementSystem.Services.OrderService>();
 builder.Services.AddScoped<OrderManagementSystem.Services.AdminService>();
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            "global", // just a string key
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 20, // 20 requests
+                Window = TimeSpan.FromMinutes(1), // per minute
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                QueueLimit = 0
+            }));
+
+    options.RejectionStatusCode = 429;
+});
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    options.InstanceName = "OrderManagementSystem_";
+});
 
 var app = builder.Build();
 
@@ -91,6 +115,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 app.MapControllers();
 
 app.Run();
