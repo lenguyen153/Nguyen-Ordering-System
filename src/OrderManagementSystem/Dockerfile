@@ -9,7 +9,7 @@ RUN dotnet publish "OrderManagementSystem.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-# Expose port 5000 for HTTP
-EXPOSE 5000
-ENV ASPNETCORE_URLS=http://+:5000
+# Expose port 5057 for HTTP
+EXPOSE 5057
+ENV ASPNETCORE_URLS=http://+:5057
 ENTRYPOINT ["dotnet", "OrderManagementSystem.dll"]
