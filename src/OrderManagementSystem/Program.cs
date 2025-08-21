@@ -94,15 +94,22 @@ builder.Services.AddRateLimiter(options =>
 });
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    options.Configuration = builder.Configuration["Redis"];
     options.InstanceName = "OrderManagementSystem_";
 });
 
+// Seed roles and admin user
 var app = builder.Build();
 
-// Seed roles and admin user
+// ** ADD THIS SECTION TO APPLY MIGRATIONS **
 using (var scope = app.Services.CreateScope())
 {
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<AppDbContext>();
+    // Apply any pending migrations
+    dbContext.Database.Migrate();
+
+    // Seed roles and admin user
     await OrderManagementSystem.Services.IdentitySeeder.SeedAsync(scope.ServiceProvider);
 }
 
