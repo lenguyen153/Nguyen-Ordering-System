@@ -41,18 +41,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
+        run: dotnet restore Nguyen-Ordering-System.sln
 
-      - name: Build solution
-        run: dotnet build --no-restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
+      - name: Build
+        run: dotnet build Nguyen-Ordering-System.sln --no-restore
 
-      - name: Run all test projects
-        shell: bash
-        run: |
-          for proj in ./tests/*/*.csproj; do
-            echo "🔍 Running tests in $proj"
-            dotnet test "$proj" --no-build --verbosity normal
-          done
+      - name: Test
+        run: dotnet test Nguyen-Ordering-System.sln --no-build --verbosity normal
 
   docker:
     needs: build-test
