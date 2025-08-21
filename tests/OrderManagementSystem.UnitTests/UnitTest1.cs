@@ -7,6 +7,7 @@ namespace OrderManagementSystem.UnitTests;
 
 public class BasicUnitTests
 {
+    // Test the Product model
     [Fact]
     public void Product_Model_Stores_And_Retrieves_Values()
     {
@@ -16,6 +17,8 @@ public class BasicUnitTests
         Assert.Equal(5, product.Stock);
     }
 
+    // Test the Order model
+    // Test the Order model's TotalPrice property
     [Fact]
     public void Order_TotalPrice_Is_Sum_Of_Items()
     {
@@ -33,6 +36,8 @@ public class BasicUnitTests
         Assert.Equal(35m, order.TotalPrice);
     }
 
+    // Test the ApplicationUser model
+    // Test the ApplicationUser model's Role property
     [Fact]
     public void ApplicationUser_Defaults_To_User_Role()
     {
