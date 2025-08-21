@@ -7,6 +7,13 @@ using System.Text.Json;
 
 namespace OrderManagementSystem.Services;
 
+// ProductService class
+// This class is responsible for managing products in the database
+// It uses a cache to improve performance
+// It uses a database context to interact with the database
+// It uses a distributed cache to store products
+// It uses a serializer to convert products to and from JSON
+// It uses a mapper to convert products to and from DTOs
 public class ProductService
 {
     private readonly AppDbContext _db;
