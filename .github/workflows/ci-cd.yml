@@ -19,7 +19,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U $${POSTGRES_USER:-postgres}" 
+          --health-cmd "pg_isready -U $${POSTGRES_USER:-postgres}"
           --health-interval 10s --health-timeout 5s --health-retries 5
       redis:
         image: redis:7
@@ -34,16 +34,25 @@ jobs:
       Jwt__ExpiryMinutes: ${{ secrets.JWT_EXPIRY_MINUTES }}
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+
       - name: Restore dependencies
-        run: dotnet restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
-      - name: Build
-        run: dotnet build --no-restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
-      - name: Run all tests
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --no-restore
+
+      - name: Run all test projects
+        shell: bash
+        run: |
+          for proj in ./tests/*/*.csproj; do
+            echo "🔍 Running tests in $proj"
+            dotnet test "$proj" --no-build --verbosity normal
+          done
 
   docker:
     needs: build-test
@@ -53,15 +62,18 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build Docker image
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/nguyen-ordering-system-api:latest ./src/OrderManagementSystem
+
       - name: Push Docker image
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/nguyen-ordering-system-api:latest
