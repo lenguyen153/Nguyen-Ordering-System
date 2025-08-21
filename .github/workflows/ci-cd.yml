@@ -19,7 +19,8 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U postgres" --health-interval 10s --health-timeout 5s --health-retries 5
+          --health-cmd "pg_isready -U $${POSTGRES_USER:-postgres}" 
+          --health-interval 10s --health-timeout 5s --health-retries 5
       redis:
         image: redis:7
         ports:
@@ -41,10 +42,8 @@ jobs:
         run: dotnet restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
       - name: Build
         run: dotnet build --no-restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
-      - name: Test Unit
-        run: dotnet test ./tests/OrderManagementSystem.UnitTests/OrderManagementSystem.UnitTests.csproj --no-build --verbosity normal
-      - name: Test Integration
-        run: dotnet test ./tests/OrderManagementSystem.IntegrationTests/OrderManagementSystem.IntegrationTests.csproj --no-build --verbosity normal
+      - name: Run all tests
+        run: dotnet test --no-build --verbosity normal
 
   docker:
     needs: build-test
