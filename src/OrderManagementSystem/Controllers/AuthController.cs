@@ -6,6 +6,15 @@ using OrderManagementSystem.Models;
 
 namespace OrderManagementSystem.Controllers;
 
+// AuthController class
+// This class is responsible for managing authentication and authorization
+// It uses a user manager to interact with the database
+// It uses a sign in manager to interact with the database
+// It uses a jwt service to generate tokens
+// It uses a http post attribute to handle the request
+// It uses a http post attribute to handle the request
+// It uses a http post attribute to handle the request
+// It uses a http post attribute to handle the request
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
