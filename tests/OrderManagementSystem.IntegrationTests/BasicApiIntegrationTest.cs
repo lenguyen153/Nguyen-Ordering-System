@@ -13,7 +13,8 @@ public class BasicApiIntegrationTest : IClassFixture<WebApplicationFactory<Order
     {
         _factory = factory;
     }
-
+    
+    // Test the Products API
     [Fact]
     public async Task Get_Products_Returns_Unauthorized_Or_EmptyList()
     {
