@@ -41,8 +41,10 @@ jobs:
         run: dotnet restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
       - name: Build
         run: dotnet build --no-restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - name: Test Unit
+        run: dotnet test ./tests/OrderManagementSystem.UnitTests/OrderManagementSystem.UnitTests.csproj --no-build --verbosity normal
+      - name: Test Integration
+        run: dotnet test ./tests/OrderManagementSystem.IntegrationTests/OrderManagementSystem.IntegrationTests.csproj --no-build --verbosity normal
 
   docker:
     needs: build-test
