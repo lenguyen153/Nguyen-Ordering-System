@@ -1,6 +1,11 @@
 # Nguyen Ordering System
 
-This is a comprehensive order management system built with .NET 8, designed to handle products, orders, and user authentication. It features a clean architecture with services for products, orders, and admin functionalities. The system uses PostgreSQL for data storage, Redis for caching, and JWT for secure authentication.
+This is a comprehensive **Order Management System** built with **.NET 8**, structured using the **MVC architecture**. It provides **RESTful APIs** to manage products, orders, and user authentication, with a clean separation of concerns through dedicated services for products, orders, and admin functionalities.  
+
+The system leverages **Entity Framework Core (EF Core)** as the ORM for seamless interaction with a **PostgreSQL** database, while **Redis** is integrated for caching and **API Limiting** to improve performance. **JWT authentication** ensures secure user access.  
+
+In addition, the project includes a suite of **unit tests** to maintain code reliability and quality.
+
 
 ---
 
