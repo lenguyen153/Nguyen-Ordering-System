@@ -41,10 +41,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
 
       - name: Build solution
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore ./src/OrderManagementSystem/OrderManagementSystem.csproj
 
       - name: Run all test projects
         shell: bash
