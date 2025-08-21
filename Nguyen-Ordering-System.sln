@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -10,8 +9,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3DFD5C2E-FAE3-4924-B293-3552B629142D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagementSystem.UnitTests", "tests\OrderManagementSystem.UnitTests\OrderManagementSystem.UnitTests.csproj", "{4C48F427-37A0-4ADD-9F65-BB7BB399E59F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagementSystem.IntegrationTests", "tests\OrderManagementSystem.IntegrationTests\OrderManagementSystem.IntegrationTests.csproj", "{8D5BCA82-BD1C-4894-8146-E3D826077221}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +27,9 @@ Global
 		{4C48F427-37A0-4ADD-9F65-BB7BB399E59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C48F427-37A0-4ADD-9F65-BB7BB399E59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C48F427-37A0-4ADD-9F65-BB7BB399E59F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D5BCA82-BD1C-4894-8146-E3D826077221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D5BCA82-BD1C-4894-8146-E3D826077221}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D5BCA82-BD1C-4894-8146-E3D826077221}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D5BCA82-BD1C-4894-8146-E3D826077221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{72B5B5B9-D662-431B-992C-E89A21364D0A} = {1C6D7064-1FAA-491D-A9CC-12755CE4AC8F}
 		{4C48F427-37A0-4ADD-9F65-BB7BB399E59F} = {3DFD5C2E-FAE3-4924-B293-3552B629142D}
-		{8D5BCA82-BD1C-4894-8146-E3D826077221} = {3DFD5C2E-FAE3-4924-B293-3552B629142D}
 	EndGlobalSection
 EndGlobal
