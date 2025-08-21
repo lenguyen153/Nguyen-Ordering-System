@@ -5,6 +5,25 @@ using OrderManagementSystem.Services;
 
 namespace OrderManagementSystem.Controllers;
 
+// AdminController class
+// This class is responsible for managing admin operations
+// It uses a service to interact with the database
+// It uses a controller base to handle the request
+// It uses a route to handle the request
+// It uses a authorize attribute to check if the user is an admin
+// It uses a http get attribute to handle the request
+// It uses a http post attribute to handle the request
+// It uses a http put attribute to handle the request
+// It uses a http delete attribute to handle the request
+// It uses a http get attribute to handle the request
+// It uses a http post attribute to handle the request
+// It uses a http put attribute to handle the request
+// It uses a http delete attribute to handle the request
+// It uses a http get attribute to handle the request
+// It uses a http post attribute to handle the request
+// It uses a http put attribute to handle the request
+// It uses a http delete attribute to handle the request
+
 [ApiController]
 [Route("api/admin")]
 [Authorize(Roles = "Admin")]
