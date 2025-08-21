@@ -27,8 +27,7 @@ This is a comprehensive order management system built with .NET 8, designed to h
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/lenguyen153/nguyen-ordering-system.git](https://github.com/lenguyen153/nguyen-ordering-system.git)
-    cd nguyen-ordering-system
+    git clone [https://github.com/lenguyen153/nguyen-ordering-system.git]
     ```
 
 2.  **Set up environment variables:**
@@ -59,22 +58,28 @@ This is a comprehensive order management system built with .NET 8, designed to h
 ### Project Structure
 
 .
-├── .github/workflows/ci-cd.yml
-├── docker-compose.yml
-├── Nguyen-Ordering-System.sln
-├── src
-│   └── OrderManagementSystem
-│       ├── Auth
-│       ├── Controllers
-│       ├── Data
-│       ├── DTOs
-│       ├── Models
-│       ├── Properties
-│       ├── Services
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+├── src/
+│   └── OrderManagementSystem/
+│       ├── Auth/
+│       ├── Controllers/
+│       ├── Data/
+│       ├── DTOs/
+│       ├── Models/
+│       ├── Properties/
+│       ├── Services/
+│       ├── OrderManagementSystem.csproj
 │       ├── Dockerfile
 │       └── Program.cs
-└── tests
-└── OrderManagementSystem.UnitTests
+├── tests/
+│   └── OrderManagementSystem.UnitTests/
+│       ├── OrderManagementSystem.UnitTests.csproj
+│       └── UnitTest1.cs
+├── .gitignore
+├── docker-compose.yml
+└── Nguyen-Ordering-System.sln
 
 
 ---
